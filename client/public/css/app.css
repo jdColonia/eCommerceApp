@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f5f5f5;
+  padding: 70px 0;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  color: #111111;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.menu .nav-bar ul li {
+  position: relative;
+  float: left;
+}
+
+.menu .nav-bar ul li a {
+  font-size: 18px;
+  padding: 20px;
+  color: #111111;
+  display: block;
+}
+
+.menu-icon {
+  width: 25px;
+}
+
+.menu label {
+  cursor: pointer;
+  display: none;
+}
+
+.submenu {
+  position: relative;
+  display: inline-block;
+}
+
+.submenu-icon {
+  cursor: pointer;
+  width: 25px;
+}
+
+.submenu-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 200px;
+  padding: 10px;
+}
+
+.submenu-dropdown h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.submenu-dropdown .btn-1,
+.submenu-dropdown .btn-2 {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.submenu-dropdown .btn-2 {
+  background-color: white;
+  color: #333;
+  border: 1px solid #333;
+}
+
+.submenu:hover .submenu-dropdown {
+  display: block;
+}
+
+/* Carrito de compras específico */
+#submenu-dropdown-car {
+  width: 400px;
+}
+
+.submenu-dropdown table {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.submenu-dropdown th,
+.submenu-dropdown td {
+  color: #111111;
+  padding: 5px;
+}
+
+.flush-car-shop {
+  background-color: #111111;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 0 200px;
+}
+
+.header-img {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.header-txt {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.header-txt h1 {
+  font-size: 90px;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #111111;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 15px;
+}
+
+.header-txt p {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.btn-1 {
+  display: inline-block;
+  padding: 11px 25px;
+  background-color: #111111;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.btn-2 {
+  display: inline-block;
+  padding: 7px 10px;
+  background-color: #111111;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.products {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.products h2 {
+  color: #111111;
+  font-family: "Oswald", sans-serif;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.product-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.product {
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+  width: 250px;
+  height: 370px;
+  margin-bottom: 20px;
+}
+
+.product h3 {
+  color: #111111;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.product p,
+.price {
+  font-size: 16px;
+  color: #111111;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-weight: 800;
+}
+
+@media (max-width: 991px) {
+  .menu .nav-bar ul li {
+    width: 100%;
+  }
+
+  .header {
+    min-height: 0vh;
+  }
+
+  .header-content {
+    padding: 50px 0;
+    flex-direction: column;
+  }
+
+  .header-img {
+    display: none;
+  }
+
+  .header-txt {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .header-txt h1 {
+    font-size: 70px;
+  }
+
+  .products {
+    padding: 0 30px 30px 30px;
+  }
+
+  .products h2 {
+    margin-bottom: 30px;
+  }
+
+  .product-content {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+
+  .product img {
+    width: 200px;
+    height: 280px;
+  }
+}

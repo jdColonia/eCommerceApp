@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../css/app.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="menu container">
+        <a class="logo">logo</a>
+        <nav class="nav-bar">
+          <ul>
+            <li><a>E COMMERCE</a></li>
+          </ul>
+        </nav>
+        <div class="submenu account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+            alt="Mi cuenta"
+            class="account-icon"
+          >
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+            />
+          </svg>
+          <div class="submenu-dropdown">
+            <h3>Mi cuenta</h3>
+            <a href="/login" id="login-btn" class="btn-1" style="display: none"
+              >Iniciar sesión</a
+            >
+            <a
+              href="/register"
+              id="register-btn"
+              class="btn-2"
+              style="display: none"
+              >Registrarme</a
+            >
+            <a
+              href="/history"
+              id="history-btn"
+              class="btn-2"
+              style="display: none"
+              >Ver pedidos</a
+            >
+            <a href="/" id="logout-btn" class="btn-1" style="display: none"
+              >Cerrar sesión</a
+            >
+          </div>
+        </div>
+        <div>
+          <ul>
+            <li class="submenu">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                alt="car-shop"
+                class="car-icon"
+              >
+                <path
+                  d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"
+                ></path>
+              </svg>
+              <div class="submenu-dropdown" id="submenu-dropdown-car">
+                <h3>Carrito</h3>
+                <table id="shop-list">
+                  <thead>
+                    <tr>
+                      <th>Imagen</th>
+                      <th>Nombre</th>
+                      <th>Precio</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                <a href="#" id="flush-car-shop" class="btn-1">Vaciar Carrito</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="header-content container">
+        <div class="header-img">
+          <img src="/images/0.png" alt="" />
+        </div>
+        <div class="header-txt">
+          <h1>Ofertas especiales</h1>
+          <p>Estrena las mejores prendas</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="products container" id="list-1">
+      <h2>Productos</h2>
+      <div class="product-content">
+        <div class="product">
+          <img src="/images/1.png" alt="" />
+          <div class="product-txt">
+            <h3>Elisyum</h3>
+            <p>Calidad premium</p>
+            <p class="price">$200</p>
+            <a href="#" class="add-car btn-2" data-id="1">Agregar al carrito</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="/images/2.png" alt="" />
+          <div class="product-txt">
+            <h3>Elisyum</h3>
+            <p>Calidad premium</p>
+            <p class="price">$200</p>
+            <a href="#" class="add-car btn-2" data-id="2">Agregar al carrito</a>
+          </div>
+        </div>
+        <div class="product">
+          <img src="/images/3.png" alt="" />
+          <div class="product-txt">
+            <h3>Elisyum</h3>
+            <p>Calidad premium</p>
+            <p class="price">$200</p>
+            <a href="#" class="add-car btn-2" data-id="3">Agregar al carrito</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
