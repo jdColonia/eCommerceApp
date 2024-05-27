@@ -1,8 +1,15 @@
+const path = require("path");
+
 // Importar el modelo
 const Product = require('../models/product');
 
 // Arreglo para almacenar los productos
 let products = [];
+
+// Controlador para mostrar la página de registro de productos
+exports.addProductPage = (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/public/html/admin.html"));
+};
 
 // Controlador para agregar un nuevo producto al inventario
 exports.addProduct = (req, res) => {

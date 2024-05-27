@@ -1,5 +1,12 @@
-/* login.css */
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
 
 body {
   font-family: "Poppins", sans-serif;
@@ -11,7 +18,7 @@ body {
 .header {
   background-color: #333;
   color: #fff;
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
 }
 
@@ -21,17 +28,14 @@ body {
   padding: 20px;
 }
 
-.login-form {
+.admin-form {
   background-color: #fff;
-  padding: 40px;
+  padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  max-width: 500px;
-  margin: 50px auto;
 }
 
-.login-form h1 {
-  text-align: center;
+.admin-form h2 {
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
@@ -45,26 +49,24 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #333;
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
 }
 
 .form-group button {
-  width: 100%;
   padding: 10px 20px;
   background-color: #333;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
 }
 
 .form-group button:hover {

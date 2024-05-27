@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
-  const messageContainer = document.getElementById("message");
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -18,11 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
+        const data = await response.json();
         window.location.href = "/";
         // Almacenar indicador de inicio de sesión
         sessionStorage.setItem("LoggedIn", "true");
+        // Almacenar indicador de tipo de usuario logueado
+        sessionStorage.setItem("UserRole", data.user.role === "admin" ? "admin" : "client");
       } else {
-        const data = await response.json();
         alert("Hubo un error al iniciar sesión");
         // Limpiar campos del formulario en caso de error
         document.getElementById("username").value = "";

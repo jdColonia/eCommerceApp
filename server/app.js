@@ -17,7 +17,7 @@ const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-app.use("/admin", adminRoutes);
+app.use(adminRoutes);
 app.use(productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", orderRoutes);

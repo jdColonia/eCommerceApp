@@ -1,52 +1,40 @@
-// Función para cargar todos los productos desde el servidor
-async function loadProducts() {
-  try {
-    const response = await fetch("/");
-    const data = await response.json();
-    // Mostrar los productos en la interfaz
-    // Por ejemplo, podrías actualizar una tabla HTML con los productos obtenidos
-    console.log("Productos:", data.products);
-  } catch (error) {
-    console.error("Error al cargar los productos:", error);
-  }
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const productForm = document.getElementById("product-form");
 
-// Función para agregar un nuevo producto al inventario
-async function addProduct() {
-  const name = document.getElementById("productName").value;
-  const image = document.getElementById("productImage").value;
-  const description = document.getElementById("productDescription").value;
-  const price = parseFloat(document.getElementById("productPrice").value);
-  const quantity = parseInt(document.getElementById("productQuantity").value);
+  productForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  const newProduct = { name, image, description, price, quantity };
+    const name = document.getElementById("productName").value;
+    const image = document.getElementById("productImage").value;
+    const description = document.getElementById("productDescription").value;
+    const price = parseFloat(document.getElementById("productPrice").value);
+    const quantity = parseInt(document.getElementById("productQuantity").value);
 
-  try {
-    const response = await fetch("/addProduct", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    });
-    const data = await response.json();
-    // Mostrar mensaje de éxito o cualquier otra lógica de manejo de respuesta
-    console.log("Producto agregado:", data.product);
-  } catch (error) {
-    console.error("Error al agregar el producto:", error);
-  }
-}
+    alert(image);
 
-// Función principal para inicializar la página de administración
-function initAdminPage() {
-  // Asignar eventos a los botones
-  document
-    .getElementById("loadProductsBtn")
-    .addEventListener("click", loadProducts);
-  document
-    .getElementById("addProductBtn")
-    .addEventListener("click", addProduct);
-}
+    try {
+      const response = await fetch("/add_product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, image, description, price, quantity }),
+      });
 
-// Inicializar la página de administración cuando el DOM esté completamente cargado
-document.addEventListener("DOMContentLoaded", initAdminPage);
+      if (response.ok) {
+        window.location.href = "/";
+      } else {
+        alert("Hubo un error al registrar el producto");
+        // Limpiar campos del formulario en caso de error
+        document.getElementById("productName").value = "";
+        document.getElementById("productImage").value = "";
+        document.getElementById("productDescription").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productQuantity").value = "";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Hubo un error al conectar con el servidor");
+    }
+  });
+});

@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("register-form");
-  const messageContainer = document.getElementById("message");
 
   registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -22,8 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/";
         // Almacenar indicador de inicio de sesión
         sessionStorage.setItem("LoggedIn", "true");
+        // Almacenar indicador de tipo de usuario logueado
+        sessionStorage.setItem("UserRole", role === "admin" ? "admin" : "client");
       } else {
-        const data = await response.json();
         alert("Hubo un error al registrar el usuario");
         // Limpiar campos del formulario en caso de error
         document.getElementById("username").value = "";

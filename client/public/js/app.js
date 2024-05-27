@@ -2,6 +2,7 @@ const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 const historyBtn = document.getElementById("history-btn");
 const logoutBtn = document.getElementById("logout-btn");
+const addProductBtn = document.getElementById("add-product-btn");
 
 const carShop = document.getElementById("car-shop");
 const element1 = document.getElementById("shop-list");
@@ -18,10 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkLoginStatus() {
   // Verificar si el usuario ha iniciado sesión
   const isLoggedIn = sessionStorage.getItem("LoggedIn");
+  // Verificar el tipo de usuario logueado
+  const userRole = sessionStorage.getItem("UserRole");
   if (isLoggedIn === "true") {
     // Si el usuario ha iniciado sesión, mostrar botón de ver pedidos y cerrar sesión
     historyBtn.style.display = "block";
     logoutBtn.style.display = "block";
+    // Mostrar el botón de "Añadir productos" si el usuario es un administrador
+    if (userRole === "admin") addProductBtn.style.display = "block";
   } else {
     // Si el usuario no ha iniciado sesión, mostrar botones de inicio de sesión y registro
     loginBtn.style.display = "block";
@@ -36,10 +41,12 @@ function loadEventListeners() {
 }
 
 function logout() {
-  // Eliminar indicador de inicio de sesión
+  // Eliminar indicador de inicio de sesión y rol del usuario
   sessionStorage.removeItem("LoggedIn");
+  sessionStorage.removeItem("UserRole");
   historyBtn.style.display = "none";
   logoutBtn.style.display = "none";
+  addProductBtn.style.display = "none";
 }
 
 function buyElement(e) {
