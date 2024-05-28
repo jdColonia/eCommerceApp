@@ -16,12 +16,14 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const userRoutes = require("./routes/userRoutes");
+const purchaseRoutes = require("./routes/purchaseRoutes");
 
 app.use(adminRoutes);
 app.use(productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", orderRoutes);
 app.use(userRoutes);
+app.use(purchaseRoutes);
 
 // Configuración ruta error 404
 app.use((req, res) => {
