@@ -35,7 +35,7 @@ function checkLoginStatus() {
 }
 
 function loadEventListeners() {
-  element1.addEventListener("click", buyElement);
+  document.querySelector('.product-content').addEventListener("click", buyElement);
   flushCarBtn.addEventListener("click", flushCar);
   logoutBtn.addEventListener("click", logout);
 }
@@ -52,38 +52,34 @@ function logout() {
 function buyElement(e) {
   e.preventDefault();
   if (e.target.classList.contains("add-car")) {
-    const element = e.target.parentElement.parentElement;
+    const element = e.target.closest('.product');
     readDataElement(element);
   }
 }
 
-function readDataElement(e) {
+function readDataElement(element) {
   const infoElement = {
-    image: e.querySelector("img").src,
-    title: e.querySelector("h3").textContent,
-    price: e.querySelector(".price").textContent,
-    id: e.querySelector("a").getAttribute("data-id"),
+    image: element.querySelector("img").src,
+    title: element.querySelector("h3").textContent,
+    price: element.querySelector(".price").textContent,
+    id: element.querySelector("a").getAttribute("data-id"),
   };
   console.log(infoElement);
   addCar(infoElement);
 }
 
-function addCar(e) {
+function addCar(infoElement) {
   const row = document.createElement("tr");
   row.innerHTML = `
-        <td>
-            <img src="${e.image}" width=100 />
-        </td>
-        <td>
-            ${e.title}
-        </td>
-        <td>
-            ${e.price}
-        </td>
-        <td>
-            <a href="#" class="delete" data-id="${e.id}">X </a>
-        </td>
-    `;
+    <td>
+      <img src="${infoElement.image}" width="100" />
+    </td>
+    <td>${infoElement.title}</td>
+    <td>${infoElement.price}</td>
+    <td>
+      <a href="#" class="delete" data-id="${infoElement.id}">X</a>
+    </td>
+  `;
   list.appendChild(row);
 }
 
