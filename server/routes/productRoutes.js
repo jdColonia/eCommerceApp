@@ -8,6 +8,6 @@ const productController = require("../controllers/productController");
 router.get("/", productController.productPage);
 
 // Ruta para obtener todos los productos disponibles
-router.get("/", productController.getAllProducts);
+router.get("/products", productController.getAllProducts);
 
 module.exports = router;

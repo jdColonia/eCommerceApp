@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   checkLoginStatus();
   // Cargar los listeners de eventos
   loadEventListeners();
+  // Cargar los productos
+  loadProducts();
 });
 
 function checkLoginStatus() {
@@ -34,8 +36,38 @@ function checkLoginStatus() {
   }
 }
 
+function loadProducts() {
+  fetch("/products")
+    .then((response) => response.json())
+    .then((data) => {
+      const products = data.products;
+      const productContent = document.querySelector(".product-content");
+      productContent.innerHTML = ""; // Limpiar contenido existente
+      products.forEach((product) => {
+        console.log(product.image);
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.innerHTML = `
+          <img src="../uploads/${product.image}" alt="${product.name}" />
+          <div class="product-txt">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p class="price">$${product.price}</p>
+            <a href="#" class="add-car btn-2" data-id="${product._id}">Agregar al carrito</a>
+          </div>
+        `;
+        productContent.appendChild(productDiv);
+      });
+    })
+    .catch((error) => {
+      console.error("Error al cargar los productos:", error);
+    });
+}
+
 function loadEventListeners() {
-  document.querySelector('.product-content').addEventListener("click", buyElement);
+  document
+    .querySelector(".product-content")
+    .addEventListener("click", buyElement);
   flushCarBtn.addEventListener("click", flushCar);
   logoutBtn.addEventListener("click", logout);
 }
@@ -52,7 +84,7 @@ function logout() {
 function buyElement(e) {
   e.preventDefault();
   if (e.target.classList.contains("add-car")) {
-    const element = e.target.closest('.product');
+    const element = e.target.closest(".product");
     readDataElement(element);
   }
 }

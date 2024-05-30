@@ -19,13 +19,13 @@
         <form id="product-form">
           <div class="form-group">
             <label for="productName">Nombre del Producto:</label>
-            <input type="text" id="productName" name="productName" required />
+            <input type="text" id="productName" name="name" required />
           </div>
           <div class="form-group">
             <label for="productDescription">Descripción:</label>
             <textarea
               id="productDescription"
-              name="productDescription"
+              name="description"
               rows="4"
               required
             ></textarea>
@@ -35,7 +35,7 @@
             <input
               type="number"
               id="productPrice"
-              name="productPrice"
+              name="price"
               step="0.01"
               required
             />
@@ -45,19 +45,14 @@
             <input
               type="number"
               id="productQuantity"
-              name="productQuantity"
+              name="quantity"
               step="1"
               required
             />
           </div>
           <div class="form-group">
             <label for="productImage">Imagen del Producto:</label>
-            <input
-              type="file"
-              id="productImage"
-              name="productImage"
-              required
-            />
+            <input type="file" id="productImage" name="image" required />
           </div>
           <div class="form-group">
             <button type="submit">Registrar Producto</button>

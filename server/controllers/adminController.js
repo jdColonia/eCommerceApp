@@ -1,7 +1,7 @@
 const path = require("path");
 
 // Importar el modelo
-const Product = require('../models/product');
+const Product = require("../models/product");
 
 // Arreglo para almacenar los productos
 let products = [];
@@ -14,7 +14,9 @@ exports.addProductPage = (req, res) => {
 // Controlador para agregar un nuevo producto al inventario
 exports.addProduct = (req, res) => {
   // Extraer los datos del cuerpo de la solicitud
-  const { name, image, description, price, quantity } = req.body;
+  const { name, description, price, quantity } = req.body;
+  // Ruta de la imagen guardada
+  const image = req.file.originalname;
 
   // Verificar si todos los campos necesarios están presentes
   if (!name || !image || !description || !price || !quantity) {

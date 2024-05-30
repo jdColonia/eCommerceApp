@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos
-app.use(express.static(path.join(__dirname, '../client/public')));
-app.use('/images', express.static(path.join(__dirname, '../images')));
+app.use(express.static(path.join(__dirname, "../client/public")));
+app.use("/images", express.static(path.join(__dirname, "../images"))); // Se usa principalmente para el banner
 
 // Configuración de las rutas
 const adminRoutes = require("./routes/adminRoutes");
@@ -20,8 +20,8 @@ const purchaseRoutes = require("./routes/purchaseRoutes");
 
 app.use(adminRoutes);
 app.use(productRoutes);
-app.use("/cart", cartRoutes);
-app.use("/order", orderRoutes);
+app.use(cartRoutes);
+app.use(orderRoutes);
 app.use(userRoutes);
 app.use(purchaseRoutes);
 
