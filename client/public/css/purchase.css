@@ -272,17 +272,17 @@ img {
   text-transform: uppercase;
 }
 
-#shop-list, #purchase-history {
+#shop-list-order, #purchase-history {
   width: 100%;
 }
 
-#shop-list th, #shop-list td, #purchase-history div {
+#shop-list-order th, #shop-list td, #purchase-history div {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
-#shop-list th {
+#shop-list-order th {
   background-color: #f5f5f5;
   font-weight: 700;
 }
@@ -290,4 +290,39 @@ img {
 #flush-car-shop, #purchase-btn {
   margin-top: 20px;
   margin-right: 10px;
+}
+
+/* Estilos para la ventana emergente de la factura */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

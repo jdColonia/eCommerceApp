@@ -11,7 +11,7 @@ const list = document.querySelector("#shop-list tbody");
 const flushCarBtn = document.getElementById("flush-car-shop");
 
 // Variable global para almacenar los productos del carrito
-let cartItems = [];
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
 document.addEventListener("DOMContentLoaded", () => {
   // Función para verificar el estado de inicio de sesión
@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadEventListeners();
   // Cargar los productos
   loadProducts();
+
+  displayCartItems();
 });
 
 function checkLoginStatus() {
@@ -73,6 +75,7 @@ function loadEventListeners() {
     .querySelector(".product-content")
     .addEventListener("click", buyElement);
   flushCarBtn.addEventListener("click", flushCar);
+  list.addEventListener("click", deleteFromCart);
   logoutBtn.addEventListener("click", logout);
 }
 
@@ -104,30 +107,45 @@ function readDataElement(element) {
   addCar(infoElement);
 }
 
-function addCar(infoElement) {
-  // Agregar el producto al arreglo de productos del carrito
-  cartItems.push(infoElement);
+function saveCartToLocalStorage() {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
 
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td>
-      <img src="${infoElement.image}" width="100" />
-    </td>
-    <td>${infoElement.title}</td>
-    <td>${infoElement.price}</td>
-    <td>
-      <a href="#" class="delete" data-id="${infoElement.id}">X</a>
-    </td>
-  `;
-  list.appendChild(row);
+function addCar(infoElement) {
+  cartItems.push(infoElement);
+  saveCartToLocalStorage();
+  renderCart();
+}
+
+function renderCart() {
+  list.innerHTML = ''; // Limpiar el contenido existente
+  cartItems.forEach((item, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <img src="${item.image}" width="100" />
+      </td>
+      <td>${item.title}</td>
+      <td>${item.price}</td>
+      <td>
+        <a href="#" class="delete" data-id="${item.id}" data-index="${index}">X</a>
+      </td>
+    `;
+    list.appendChild(row);
+  });
 }
 
 function flushCar() {
-  // Vaciar el carrito eliminando todos los elementos de la lista
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-  // Vaciar la variable global cartItems
   cartItems = [];
-  return false;
+  saveCartToLocalStorage();
+  renderCart();
+}
+
+function deleteFromCart(e) {
+  if (e.target.classList.contains("delete")) {
+    const index = e.target.getAttribute("data-index");
+    cartItems.splice(index, 1);
+    saveCartToLocalStorage();
+    renderCart();
+  }
 }
