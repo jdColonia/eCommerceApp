@@ -1,8 +1,14 @@
+// cartController.js
 // Importar el modelo
 const Cart = require("../models/cart");
 
 // Arreglo para almacenar los carritos de compras
 let carts = [];
+
+// Controlador para obtener los elementos del carrito
+exports.getCartItems = (req, res) => {
+  res.status(200).json({ carts });
+};
 
 // Controlador para agregar un producto al carrito
 exports.addItem = (req, res) => {

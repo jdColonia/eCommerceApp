@@ -1,3 +1,4 @@
+// app.js
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 const historyBtn = document.getElementById("history-btn");
@@ -8,6 +9,9 @@ const carShop = document.getElementById("car-shop");
 const element1 = document.getElementById("shop-list");
 const list = document.querySelector("#shop-list tbody");
 const flushCarBtn = document.getElementById("flush-car-shop");
+
+// Variable global para almacenar los productos del carrito
+let cartItems = [];
 
 document.addEventListener("DOMContentLoaded", () => {
   // Función para verificar el estado de inicio de sesión
@@ -101,6 +105,9 @@ function readDataElement(element) {
 }
 
 function addCar(infoElement) {
+  // Agregar el producto al arreglo de productos del carrito
+  cartItems.push(infoElement);
+
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>
@@ -120,5 +127,7 @@ function flushCar() {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
+  // Vaciar la variable global cartItems
+  cartItems = [];
   return false;
 }

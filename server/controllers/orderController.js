@@ -1,5 +1,10 @@
 // Importar el modelo
 const Order = require("../models/order");
+const path = require("path");
+
+exports.orderPage = (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/public/html/purchase.html"));
+};
 
 // Arreglo para almacenar los pedidos
 let orders = [];
