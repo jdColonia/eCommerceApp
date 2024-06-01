@@ -38,3 +38,7 @@ exports.placeOrder = (req, res) => {
     .status(201)
     .json({ message: "Pedido realizado correctamente", order: newOrder });
 }
+
+exports.getOrderHistory = (req, res) => {
+  res.json({ orders: orders });
+};
