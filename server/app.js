@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 // Middleware para parsear el cuerpo de las solicitudes HTTP
 app.use(bodyParser.json());
-
+app.use(express.json());
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, "../client/public")));
 app.use("/images", express.static(path.join(__dirname, "../images"))); // Se usa principalmente para el banner
@@ -16,6 +16,7 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderController = require('./controllers/orderController');
 
 app.use(adminRoutes);
 app.use(productRoutes);
@@ -45,4 +46,5 @@ app.get('/history', (req, res) => {
   res.json({ orders: orders });
 });
 
+app.post('/placeOrder', orderController.placeOrder);
 module.exports = app;
