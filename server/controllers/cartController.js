@@ -7,7 +7,11 @@ let carts = [];
 
 // Controlador para obtener los elementos del carrito
 exports.getCartItems = (req, res) => {
-  res.status(200).json({ carts });
+  const userCart = carts.find(cart => cart.user === req.user.username);
+  if (!userCart) {
+    return res.status(200).json({ items: [] });
+  }
+  res.status(200).json({ items: userCart.items });
 };
 
 // Controlador para agregar un producto al carrito

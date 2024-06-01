@@ -272,17 +272,17 @@ img {
   text-transform: uppercase;
 }
 
-#shop-list, #purchase-history {
+#shop-list-order, #purchase-history {
   width: 100%;
 }
 
-#shop-list th, #shop-list td, #purchase-history div {
+#shop-list-order th, #shop-list td, #purchase-history div {
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
-#shop-list th {
+#shop-list-order th {
   background-color: #f5f5f5;
   font-weight: 700;
 }
