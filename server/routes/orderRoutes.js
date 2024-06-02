@@ -1,22 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const path = require('path');
 
 // Importar el controlador
 const orderController = require("../controllers/orderController");
 
+// Ruta para servir la pagina del carrito de compras
 router.get("/purchase", orderController.orderPage);
 
-// Ruta para servir el archivo JSON
-router.get('/order-history', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/public/data/orderHistory.json'));
-  });
+// Ruta para servir la pagina del historial de pedidos
+router.get("/history", orderController.historyPage);
 
-// Ruta para realizar un pedido
+// Ruta para enviar una orden al servidor
 router.post("/placeOrder", orderController.placeOrder);
 
-router.get('/history', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/public/html/history.html'));
-  });
+// Ruta para obtener los pedidos de un usuario
+router.get("/history/:username", orderController.getOrderHistory);
 
 module.exports = router;

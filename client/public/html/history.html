@@ -1,38 +1,105 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historial de Pedidos</title>
-  <link rel="stylesheet" href="../css/history.css">
-</head>
-<body>
-  <header class="header">
-    <div class="menu container">
-      <a class="logo" href="/">logo</a>
-      <nav class="nav-bar">
-        <ul>
-          <li><a>E COMMERCE</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main class="container">
-    <section class="history">
-      <h2>Historial de Pedidos</h2>
-      <table id="order-history">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Historial de Pedidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/history.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1>Historial de pedidos</h1>
+      </div>
+    </header>
+    <div class="container">
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Número de Pedido</th>
+            <th>Identificador del pedido</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Productos</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="order-history-body"></tbody>
       </table>
-    </section>
-  </main>
-  <script src="../js/history.js"></script>
-</body>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const username = sessionStorage.getItem("User");
+        const response = await fetch(`/history/${username}`);
+        const data = await response.json();
+
+        if (data.success) {
+          const orders = data.orders;
+          const tbody = document.getElementById("order-history-body");
+
+          orders.forEach((order) => {
+            const tr = document.createElement("tr");
+
+            const orderId = document.createElement("td");
+            orderId.textContent = order.id;
+            tr.appendChild(orderId);
+
+            const dateTd = document.createElement("td");
+            dateTd.textContent = new Date(order.date).toLocaleString();
+            tr.appendChild(dateTd);
+
+            const totalTd = document.createElement("td");
+            totalTd.textContent = `$${order.total.toFixed(2)}`;
+            tr.appendChild(totalTd);
+
+            const productsTd = document.createElement("td");
+            const carouselId = `carousel-${order.id}`;
+
+            productsTd.innerHTML = `
+            <div class="carousel-container" id="${carouselId}">
+              ${order.items
+                .map(
+                  (item, index) => `
+                <div class="carousel-item ${index === 0 ? "active" : ""}">
+                  <img src="${item.image}" alt="${item.name}">
+                  <div class="carousel-caption">
+                    <p>${item.quantity} 
+                      x 
+                      $${item.price.toFixed(2)}</p>
+                  </div>
+                </div>
+              `
+                )
+                .join("")}
+              <div class="carousel-control-prev" onclick="prevSlide('${carouselId}')">&#10094;</div>
+              <div class="carousel-control-next" onclick="nextSlide('${carouselId}')">&#10095;</div>
+            </div>
+          `;
+            tr.appendChild(productsTd);
+
+            tbody.appendChild(tr);
+          });
+        } else {
+          alert("Error al cargar el historial de pedidos");
+        }
+      });
+
+      function nextSlide(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const items = carousel.querySelectorAll(".carousel-item");
+        let currentIndex = Array.from(items).findIndex((item) => item.classList.contains("active"));
+        items[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % items.length;
+        items[currentIndex].classList.add("active");
+      }
+
+      function prevSlide(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const items = carousel.querySelectorAll(".carousel-item");
+        let currentIndex = Array.from(items).findIndex((item) => item.classList.contains("active"));
+        items[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        items[currentIndex].classList.add("active");
+      }
+    </script>
+  </body>
 </html>

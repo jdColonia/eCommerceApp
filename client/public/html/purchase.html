@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compra e Historial</title>
-    <link rel="stylesheet" href="../css/purchase.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/purchase.css" />
+  </head>
+  <body>
     <header class="header">
-        <div class="menu container">
-            <a class="logo" href="/">logo</a>
-            <nav class="nav-bar">
-                <ul>
-                    <li><a>E COMMERCE</a></li>
-                </ul>
-            </nav>
-            <div class="submenu account">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill"
-                    viewBox="0 0 16 16" alt="Mi cuenta" class="account-icon">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                </svg>
-                <div class="submenu-dropdown">
-                    <h3>Mi cuenta</h3>
-                    <a href="/login" id="login-btn" class="btn-1" style="display: none">Iniciar sesión</a>
-                    <a href="/register" id="register-btn" class="btn-2" style="display: none">Registrarme</a>
-                    <a href="/history" id="history-btn" class="btn-2" style="display: none">Ver pedidos</a>
-                    <a href="/" id="logout-btn" class="btn-1" style="display: none">Cerrar sesión</a>
-                </div>
-            </div>
+      <div class="menu container">
+        <a class="logo" href="/">logo</a>
+        <nav class="nav-bar">
+          <ul>
+            <li><a>E COMMERCE</a></li>
+          </ul>
+        </nav>
+        <div class="submenu account">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+            alt="Mi cuenta"
+            class="account-icon"
+          >
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+          </svg>
+          <div class="submenu-dropdown">
+            <h3>Mi cuenta</h3>
+            <a href="/login" id="login-btn" class="btn-1" style="display: none">Iniciar sesión</a>
+            <a href="/register" id="register-btn" class="btn-2" style="display: none">Registrarme</a>
+            <a href="/history" id="history-btn" class="btn-2" style="display: none">Ver pedidos</a>
+            <a href="/" id="logout-btn" class="btn-1" style="display: none">Cerrar sesión</a>
+          </div>
         </div>
-        <div class="header-content container">
-            <div class="header-img">
-                <img src="/images/0.png" alt="" />
-            </div>
-            <div class="header-txt">
-                <h1>Ofertas especiales</h1>
-                <p>Estrena las mejores prendas</p>
-            </div>
+      </div>
+      <div class="header-content container">
+        <div class="header-img">
+          <img src="/images/0.png" alt="" />
         </div>
+        <div class="header-txt">
+          <h1>Ofertas especiales</h1>
+          <p>Estrena las mejores prendas</p>
+        </div>
+      </div>
     </header>
     <main class="container">
-        <section class="cart">
-            <h2>Carrito</h2>
-            <table id="shop-list-order">
-                <thead>
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-            <button id="flush-car-shop" class="btn-1">Vaciar Carrito</button>
-            <button id="purchase-btn" class="btn-1">Realizar Compra</button>
-        </section>
-        <div id="invoice-popup" class="popup">
-            <div class="popup-content">
-                <span class="close">&times;</span>
-                <h2>Factura</h2>
-                <p id="invoice-name"></p>
-                <p id="invoice-date"></p>
-                <p id="invoice-order"></p>
-                <p id="invoice-total"></p>
-            </div>
+      <section class="cart">
+        <h2>Carrito</h2>
+        <table id="shop-list-order">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button id="flush-car-shop" class="btn-1">Vaciar Carrito</button>
+        <button id="purchase-btn" class="btn-1">Realizar Compra</button>
+      </section>
+      <div id="invoice-popup" class="popup">
+        <div class="popup-content">
+          <span class="close">&times;</span>
+          <h2>Factura</h2>
+          <p id="invoice-id"></p>
+          <p id="invoice-name"></p>
+          <p id="invoice-date"></p>
+          <p id="invoice-order"></p>
+          <p id="invoice-total"></p>
         </div>
+      </div>
     </main>
     <script src="../js/purchase.js"></script>
-</body>
+  </body>
 </html>

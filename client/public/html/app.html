@@ -26,32 +26,14 @@
             alt="Mi cuenta"
             class="account-icon"
           >
-            <path
-              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
-            />
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
           </svg>
           <div class="submenu-dropdown">
             <h3>Mi cuenta</h3>
-            <a href="/login" id="login-btn" class="btn-1" style="display: none"
-              >Iniciar sesión</a
-            >
-            <a
-              href="/register"
-              id="register-btn"
-              class="btn-2"
-              style="display: none"
-              >Registrarme</a
-            >
-            <a
-              href="/history"
-              id="history-btn"
-              class="btn-2"
-              style="display: none"
-              >Ver pedidos</a
-            >
-            <a href="/" id="logout-btn" class="btn-1" style="display: none"
-              >Cerrar sesión</a
-            >
+            <a href="/login" id="login-btn" class="btn-1" style="display: none">Iniciar sesión</a>
+            <a href="/register" id="register-btn" class="btn-2" style="display: none">Registrarme</a>
+            <a href="/history" id="history-btn" class="btn-2" style="display: none">Ver pedidos</a>
+            <a href="/" id="logout-btn" class="btn-1" style="display: none">Cerrar sesión</a>
           </div>
         </div>
         <div>
@@ -83,7 +65,7 @@
                   </thead>
                   <tbody></tbody>
                 </table>
-                <a href="/purchase" class="btn-1">Ir a la compra</a>
+                <a href="/purchase" id="purchase-btn" class="btn-1">Ir a la compra</a>
                 <a href="#" id="flush-car-shop" class="btn-1">Vaciar Carrito</a>
               </div>
             </li>
@@ -105,13 +87,7 @@
     <main class="products container" id="list-1">
       <h2>Productos</h2>
       <div class="product-content"></div>
-      <a
-        href="/add_product"
-        id="add-product-btn"
-        class="btn-1"
-        style="display: none"
-        >Añadir Producto</a
-      >
+      <a href="/add_product" id="add-product-btn" class="btn-1" style="display: none">Añadir Producto</a>
     </main>
 
     <script src="../js/app.js"></script>

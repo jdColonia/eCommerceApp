@@ -13,14 +13,12 @@ app.use("/images", express.static(path.join(__dirname, "../images"))); // Se usa
 // Configuración de las rutas
 const adminRoutes = require("./routes/adminRoutes");
 const productRoutes = require("./routes/productRoutes");
-const cartRoutes = require("./routes/cartRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const userRoutes = require("./routes/userRoutes");
 const orderController = require('./controllers/orderController');
 
 app.use(adminRoutes);
 app.use(productRoutes);
-app.use(cartRoutes);
 app.use(orderRoutes);
 app.use(userRoutes);
 

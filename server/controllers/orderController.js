@@ -1,34 +1,36 @@
-// Importar el modelo
 const Order = require("../models/order");
 const path = require("path");
 
-// Arreglo para almacenar los pedidos
-let carts = [];
+const orders = [];
 
 exports.orderPage = (req, res) => {
   res.sendFile(path.join(__dirname, "../../client/public/html/purchase.html"));
 };
 
+exports.historyPage = (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/public/html/history.html"));
+};
 
-
-// Controlador para realizar un nuevo pedido
 exports.placeOrder = (req, res) => {
-  const cartItems = req.body.items || [];
-  if (cartItems.length === 0) {
-      return res.status(400).json({
-          error: "No hay productos en el carrito para realizar el pedido",
-      });
+  const { username, cartItems } = req.body;
+  if (!cartItems || cartItems.length === 0) {
+    return res.status(400).json({ success: false, message: "El carrito está vacío" });
   }
 
-  const total = cartItems.reduce((acc, item) => acc + item.price, 0);
-
-  const newOrder = new Order(req.user.username, cartItems, total);
+  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const newOrder = new Order(username, cartItems, total);
 
   orders.push(newOrder);
-
-  res.status(201).json({ message: "Pedido realizado correctamente", order: newOrder });
-}
+  res.json({ success: true, order: newOrder });
+};
 
 exports.getOrderHistory = (req, res) => {
-  res.json({ orders: orders });
+  const username = req.params.username;
+
+  try {
+    const userOrders = orders.filter((order) => order.customer === username);
+    res.json({ success: true, orders: userOrders });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error al obtener los pedidos" });
+  }
 };

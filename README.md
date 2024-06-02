@@ -1,9 +1,8 @@
 # eCommerceApp
 
-Pagina web para un eCommerce (tienda en linea) mediante el uso de servicios REST y fetch
+Página web para un eCommerce (tienda en linea) mediante el uso de servicios REST y Fetch.
 
-"Implementacion realizada mediante una arquitectura cliente-servidor, donde el servidor debe exponer los servicios necesarios para satisfacer los requerimientos funcionales y el cliente
-consume el API para presentar los datos de forma agradable al Usuario."
+"Implementacion realizada mediante una arquitectura cliente-servidor, donde el servidor debe exponer los servicios necesarios para satisfacer los requerimientos funcionales y el cliente consume el API para presentar los datos de forma agradable al Usuario."
 
 # Integrantes:
 

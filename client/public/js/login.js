@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.setItem("LoggedIn", "true");
         // Almacenar indicador de tipo de usuario logueado
         sessionStorage.setItem("UserRole", data.user.role === "admin" ? "admin" : "client");
+        // Almacenar al usuario que está logueado
+        sessionStorage.setItem("User", username);
       } else {
         alert("Hubo un error al iniciar sesión");
         // Limpiar campos del formulario en caso de error

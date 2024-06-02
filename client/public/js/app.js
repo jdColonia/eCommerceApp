@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadEventListeners();
   // Cargar los productos
   loadProducts();
-
-  displayCartItems();
+  // Mostrar los productos en el carrito
+  renderCart();
 });
 
 function checkLoginStatus() {
@@ -48,9 +48,8 @@ function loadProducts() {
     .then((data) => {
       const products = data.products;
       const productContent = document.querySelector(".product-content");
-      productContent.innerHTML = ""; // Limpiar contenido existente
+      productContent.innerHTML = "";
       products.forEach((product) => {
-        console.log(product.image);
         const productDiv = document.createElement("div");
         productDiv.classList.add("product");
         productDiv.innerHTML = `
@@ -59,7 +58,7 @@ function loadProducts() {
             <h3>${product.name}</h3>
             <p>${product.description}</p>
             <p class="price">$${product.price}</p>
-            <a href="#" class="add-car btn-2" data-id="${product._id}">Agregar al carrito</a>
+            <a href="#" class="add-car btn-2" data-id="${product.name}">Agregar al carrito</a>
           </div>
         `;
         productContent.appendChild(productDiv);
@@ -71,18 +70,20 @@ function loadProducts() {
 }
 
 function loadEventListeners() {
-  document
-    .querySelector(".product-content")
-    .addEventListener("click", buyElement);
+  document.querySelector(".product-content").addEventListener("click", buyElement);
   flushCarBtn.addEventListener("click", flushCar);
   list.addEventListener("click", deleteFromCart);
   logoutBtn.addEventListener("click", logout);
+  document.getElementById("purchase-btn").addEventListener("click", () => {
+    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+  });
 }
 
 function logout() {
   // Eliminar indicador de inicio de sesión y rol del usuario
   sessionStorage.removeItem("LoggedIn");
   sessionStorage.removeItem("UserRole");
+  sessionStorage.removeItem("User");
   historyBtn.style.display = "none";
   logoutBtn.style.display = "none";
   addProductBtn.style.display = "none";
@@ -100,36 +101,31 @@ function readDataElement(element) {
   const infoElement = {
     image: element.querySelector("img").src,
     title: element.querySelector("h3").textContent,
-    price: element.querySelector(".price").textContent,
+    price: parseFloat(element.querySelector(".price").textContent.replace("$", "")),
     id: element.querySelector("a").getAttribute("data-id"),
+    quantity: 1,
   };
-  console.log(infoElement);
-  addCar(infoElement);
-}
 
-function saveCartToLocalStorage() {
-  localStorage.setItem('cartItems', JSON.stringify(cartItems));
-}
+  const existingItem = cartItems.find((item) => item.id === infoElement.id);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cartItems.push(infoElement);
+  }
 
-function addCar(infoElement) {
-  cartItems.push(infoElement);
-  saveCartToLocalStorage();
   renderCart();
 }
 
 function renderCart() {
-  list.innerHTML = ''; // Limpiar el contenido existente
+  list.innerHTML = "";
   cartItems.forEach((item, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>
-        <img src="${item.image}" width="100" />
-      </td>
+      <td><img src="${item.image}" width="100" /></td>
       <td>${item.title}</td>
       <td>${item.price}</td>
-      <td>
-        <a href="#" class="delete" data-id="${item.id}" data-index="${index}">X</a>
-      </td>
+      <td>${item.quantity}</td>
+      <td><a href="#" class="delete" data-id="${item.id}" data-index="${index}">X</a></td>
     `;
     list.appendChild(row);
   });
@@ -137,7 +133,6 @@ function renderCart() {
 
 function flushCar() {
   cartItems = [];
-  saveCartToLocalStorage();
   renderCart();
 }
 
@@ -145,7 +140,6 @@ function deleteFromCart(e) {
   if (e.target.classList.contains("delete")) {
     const index = e.target.getAttribute("data-index");
     cartItems.splice(index, 1);
-    saveCartToLocalStorage();
     renderCart();
   }
 }
