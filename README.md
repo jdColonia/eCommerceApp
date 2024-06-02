@@ -8,7 +8,9 @@ consume el API para presentar los datos de forma agradable al Usuario."
 # Integrantes:
 
 Juan David Colonia - A00395956
+
 David Santiago Malte - A00368867
+
 David Henao Salazar - A00394033
 
 # Pasos para la ejecucion correcta de la pagina web:
