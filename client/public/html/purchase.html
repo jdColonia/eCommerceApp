@@ -9,6 +9,9 @@
   <body>
     <header class="header">
       <div class="container">
+        <div class="home-btn">
+          <a href="/">Inicio</a>
+        </div>
         <h1>Finalizar la compra</h1>
       </div>
     </header>
@@ -25,7 +28,16 @@
               <th></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <tr>
+              <td><img src="path_to_image.jpg" alt="Product Image"></td>
+              <td>Producto 1</td>
+              <td>$10.00</td>
+              <td>2</td>
+              <td><button class="btn-1">Eliminar</button></td>
+            </tr>
+            <!-- Aquí puedes añadir más filas de productos -->
+          </tbody>
         </table>
         <button id="flush-car-shop" class="btn-1">Vaciar Carrito</button>
         <button id="purchase-btn" class="btn-1">Realizar Compra</button>
@@ -34,11 +46,11 @@
         <div class="popup-content">
           <span class="close">&times;</span>
           <h2>Factura</h2>
-          <p id="invoice-id"></p>
-          <p id="invoice-name"></p>
-          <p id="invoice-date"></p>
-          <p id="invoice-order"></p>
-          <p id="invoice-total"></p>
+          <p id="invoice-id">ID: 123456</p>
+          <p id="invoice-name">Nombre: Juan Pérez</p>
+          <p id="invoice-date">Fecha: 01/06/2024</p>
+          <p id="invoice-order">Pedido: 3x Producto 1, 2x Producto 2</p>
+          <p id="invoice-total">Total: $50.00</p>
         </div>
       </div>
     </main>

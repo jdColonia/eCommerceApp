@@ -12,6 +12,30 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  position: relative; /* Added for positioning the button */
+}
+
+.header .home-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header .home-btn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.header .home-btn a:hover {
+  background-color: #ddd;
 }
 
 .container {
@@ -98,5 +122,5 @@ h1 {
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
-  color:#212529;
+  color: #212529;
 }

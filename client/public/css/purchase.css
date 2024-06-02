@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap");
 
-
 body {
   font-family: "Poppins", sans-serif;
   background-color: #f5f5f5;
@@ -13,6 +12,30 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  position: relative; /* Added for positioning the button */
+}
+
+.header .home-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header .home-btn a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.header .home-btn a:hover {
+  background-color: #ddd;
 }
 
 .container {
@@ -22,26 +45,12 @@ body {
 }
 
 /* Carrito de compras específico */
-
-#shop-list-order th,
-#shop-list-order td {
-  color: #111111;
-  padding: 5px;
-}
-
-.btn-1 {
-  display: inline-block;
-  padding: 11px 25px;
-  background-color: #111111;
-  color: #ffffff;
-  border-radius: 5px;
-}
-
 .cart {
   margin-bottom: 40px;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .cart h2 {
@@ -49,26 +58,51 @@ body {
   font-family: "Oswald", sans-serif;
   font-size: 25px;
   text-transform: uppercase;
+  color: #333;
 }
 
 #shop-list-order {
   width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-#shop-list-order table {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-#shop-list-order th, #shop-list td {
-  padding: 10px;
+#shop-list-order th, #shop-list-order td {
+  padding: 15px;
   border: 1px solid #ddd;
   text-align: left;
 }
 
 #shop-list-order th {
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
   font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
+}
+
+#shop-list-order tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#shop-list-order img {
+  max-width: 50px;
+  border-radius: 5px;
+}
+
+.btn-1 {
+  display: inline-block;
+  padding: 11px 25px;
+  background-color: #333;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.btn-1:hover {
+  background-color: #555;
 }
 
 #flush-car-shop, #purchase-btn {
@@ -95,6 +129,12 @@ body {
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+  margin-top: 0;
 }
 
 .close {
