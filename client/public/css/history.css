@@ -12,7 +12,7 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  position: relative; /* Added for positioning the button */
+  position: relative;
 }
 
 .header .home-btn {
@@ -44,10 +44,20 @@ body {
   padding: 20px;
 }
 
-h1 {
-  font-family: "Oswald", sans-serif;
-  font-weight: 600;
+.orders {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.orders h2 {
   margin-bottom: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #333;
 }
 
 .table {
@@ -73,6 +83,13 @@ h1 {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
+}
+
+.table th {
+  background-color: #f8f8f8;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #333;
 }
 
 .table tbody + tbody {

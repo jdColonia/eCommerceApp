@@ -8,6 +8,14 @@ function addEventListeners() {
   document.getElementById("flush-car-shop").addEventListener("click", flushCar);
   document.getElementById("purchase-btn").addEventListener("click", placeOrder);
   document.querySelector(".close").addEventListener("click", closePopup);
+
+  document.querySelector("#shop-list-order tbody").addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete")) {
+      event.preventDefault();
+      const index = event.target.getAttribute("data-index");
+      deleteCartItem(index);
+    }
+  });
 }
 
 function loadCartItems() {
@@ -26,7 +34,7 @@ function renderCartItems() {
     row.innerHTML = `
       <td><img src="${item.image}" width="100" /></td>
       <td>${item.title}</td>
-      <td>${item.price}</td>
+      <td>$${item.price}</td>
       <td>${item.quantity}</td>
       <td><a href="#" class="delete" data-index="${index}">X</a></td>
     `;
@@ -36,6 +44,7 @@ function renderCartItems() {
 
 function flushCar() {
   cartItems = [];
+  sessionStorage.removeItem("cartItems");
   renderCartItems();
 }
 
@@ -59,6 +68,7 @@ function placeOrder() {
       if (data.success) {
         showInvoice(data.order);
         cartItems = [];
+        sessionStorage.removeItem("cartItems");
         renderCartItems();
       } else {
         alert("Error al realizar el pedido");
@@ -69,18 +79,48 @@ function placeOrder() {
     });
 }
 
+function formatItemsTable(items) {
+  return `
+    <table>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+      </tr>
+      ${items
+        .map(
+          (item) => `
+        <tr>
+          <td>${item.title}</td>
+          <td>${item.quantity}</td>
+        </tr>
+      `
+        )
+        .join("")}
+    </table>
+  `;
+}
+
 function showInvoice(order) {
-  document.getElementById("invoice-id").textContent = `Número de pedido: ${order.id}`;
-  document.getElementById("invoice-name").textContent = `Nombre: ${order.customer}`;
-  document.getElementById("invoice-date").textContent = `Fecha: ${new Date(order.date).toLocaleString()}`;
-  document.getElementById("invoice-order").textContent = `Orden: ${order.items
-    .map((item) => `${item.title} x${item.quantity}`)
-    .join(", ")}`;
-  document.getElementById("invoice-total").textContent = `Total: $${order.total.toFixed(2)}`;
+  document.getElementById("invoice-id").innerHTML = `<strong>Número de pedido:</strong> ${order.id}<br>`;
+  document.getElementById("invoice-name").innerHTML = `<strong>Nombre:</strong> ${order.customer}<br>`;
+  document.getElementById("invoice-date").innerHTML = `<strong>Fecha:</strong> ${new Date(
+    order.date
+  ).toLocaleString()}<br>`;
+  document.getElementById("invoice-order").innerHTML = `<strong>Orden:</strong><br>${formatItemsTable(
+    order.items
+  )}<br>`;
+  document.getElementById("invoice-total").innerHTML = `<strong>Total:</strong> $${order.total.toFixed(2)}<br>`;
 
   document.getElementById("invoice-popup").style.display = "block";
 }
 
 function closePopup() {
   document.getElementById("invoice-popup").style.display = "none";
+  window.location.href = "/";
+}
+
+function deleteCartItem(index) {
+  cartItems.splice(index, 1);
+  sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+  renderCartItems();
 }

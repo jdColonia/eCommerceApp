@@ -186,6 +186,10 @@ img {
   border-radius: 5px;
 }
 
+.btn-1:hover {
+  background-color: #555;
+}
+
 .btn-2 {
   display: inline-block;
   padding: 7px 10px;
@@ -255,6 +259,10 @@ img {
   background-color: #333;
   color: white;
   cursor: pointer;
+}
+
+#add-product-btn:hover {
+  background-color: #555;
 }
 
 @media (max-width: 991px) {

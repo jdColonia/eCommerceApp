@@ -1,4 +1,3 @@
-// app.js
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
 const historyBtn = document.getElementById("history-btn");

@@ -17,17 +17,20 @@
       </div>
     </header>
     <div class="container">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Identificador del pedido</th>
-            <th>Fecha</th>
-            <th>Total</th>
-            <th>Productos</th>
-          </tr>
-        </thead>
-        <tbody id="order-history-body"></tbody>
-      </table>
+      <section class="orders">
+        <h2>Pedidos</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Identificador del pedido</th>
+              <th>Fecha</th>
+              <th>Total</th>
+              <th>Productos</th>
+            </tr>
+          </thead>
+          <tbody id="order-history-body"></tbody>
+        </table>
+      </section>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", async () => {

@@ -12,7 +12,7 @@ body {
   color: #fff;
   padding: 20px 0;
   text-align: center;
-  position: relative; /* Added for positioning the button */
+  position: relative;
 }
 
 .header .home-btn {
@@ -44,7 +44,7 @@ body {
   padding: 20px;
 }
 
-/* Carrito de compras específico */
+/* Carrito de compras */
 .cart {
   margin-bottom: 40px;
   padding: 20px;
@@ -63,15 +63,28 @@ body {
 
 #shop-list-order {
   width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #shop-list-order th,
 #shop-list-order td {
-  padding: 15px;
-  border: 1px solid #ddd;
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   text-align: left;
+}
+
+#shop-list-order thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
 }
 
 #shop-list-order th {
@@ -85,9 +98,27 @@ body {
   background-color: #f9f9f9;
 }
 
+#shop-list-order tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+#shop-list-order tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 #shop-list-order img {
-  max-width: 50px;
-  border-radius: 5px;
+  width: 120px;
+  height: 170px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .btn-1 {
@@ -110,6 +141,19 @@ body {
 #purchase-btn {
   margin-top: 20px;
   margin-right: 10px;
+}
+
+.delete {
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.delete:hover,
+.delete:focus {
+  color: black;
+  cursor: pointer;
 }
 
 /* Estilos para la ventana emergente de la factura */
@@ -137,6 +181,23 @@ body {
 
 .popup-content h2 {
   margin-top: 0;
+}
+
+.popup-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.popup-content th,
+.popup-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.popup-content th {
+  background-color: #f2f2f2;
 }
 
 .close {
