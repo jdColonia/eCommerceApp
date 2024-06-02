@@ -144,4 +144,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node
 
 # Statics files uploaded to app
-client/public/uploads
+client/public/uploads/*
+!client/public/uploads/.gitkeep
