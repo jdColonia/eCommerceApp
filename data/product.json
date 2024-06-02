@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "name": "Camisa de algodón",
+      "image": "4.png",
+      "description": "Camisa de manga larga.",
+      "price": 25,
+      "quantity": 50
+    },
+    {
+      "name": "Sudadera con capucha",
+      "image": "2.png",
+      "description": "Sudadera con capucha y bolsillos delanteros.",
+      "price": 35,
+      "quantity": 45
+    },
+    {
+      "name": "Chaqueta de cuero",
+      "image": "8.png",
+      "description": "Chaqueta hecha de cuero genuino.",
+      "price": 50,
+      "quantity": 20
+    }
+  ]
+}
