@@ -75,7 +75,7 @@ function loadEventListeners() {
   list.addEventListener("click", deleteFromCart);
   logoutBtn.addEventListener("click", logout);
   document.getElementById("purchase-btn").addEventListener("click", () => {
-    sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
   });
 }
 

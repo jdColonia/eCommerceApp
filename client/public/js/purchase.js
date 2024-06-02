@@ -11,7 +11,7 @@ function addEventListeners() {
 }
 
 function loadCartItems() {
-  const storedCartItems = sessionStorage.getItem('cartItems');
+  const storedCartItems = sessionStorage.getItem("cartItems");
   if (storedCartItems) {
     cartItems = JSON.parse(storedCartItems);
   }

@@ -23,9 +23,7 @@ exports.register = (req, res) => {
 
   // Verificar si el nombre de usuario ya está en uso
   if (users.find((user) => user.username === username)) {
-    return res
-      .status(400)
-      .json({ error: "El nombre de usuario ya está en uso" });
+    return res.status(400).json({ error: "El nombre de usuario ya está en uso" });
   }
 
   // Crear una nueva instancia del usuario
@@ -35,9 +33,7 @@ exports.register = (req, res) => {
   users.push(newUser);
 
   // Respondemos con el nuevo usuario creado
-  res
-    .status(201)
-    .json({ message: "Usuario registrado correctamente", user: newUser });
+  res.status(201).json({ message: "Usuario registrado correctamente", user: newUser });
 };
 
 // Controlador para mostrar la página de inicio de sesión
@@ -56,15 +52,11 @@ exports.login = (req, res) => {
   }
 
   // Buscar el usuario en el arreglo de usuarios en memoria
-  const user = users.find(
-    (user) => user.username === username && user.password === password
-  );
+  const user = users.find((user) => user.username === username && user.password === password);
 
   // Verificar si el usuario fue encontrado
   if (!user) {
-    return res
-      .status(404)
-      .json({ error: "Usuario no encontrado o contraseña incorrecta" });
+    return res.status(404).json({ error: "Usuario no encontrado o contraseña incorrecta" });
   }
 
   // Respondemos con el usuario encontrado
